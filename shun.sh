@@ -118,7 +118,8 @@ extract_score() {
     log_debug "---- filename: ${file}"
     for line in $lines; do
         blame=$(git -C "$(dirname "$_filename")" blame \
-                    --line-porcelain "$_filename" -L "$line,$line")
+                    --line-porcelain "$(basename "$_filename")" \
+                    -L "$line,$line")
         bwho=$(echo "$blame" | sed -n 's%^committer \(.*\)%\1%p')
         bdate=$(echo "$blame" | sed -n 's%^committer-time \([0-9]\+\)%\1%p')
 
@@ -178,6 +179,7 @@ check_path() {
         if [ ! -f "$_path" ]; then
             echo "$_path: directory or file not found"; return 1
         fi
+        _path=$(dirname "$_path")
     fi
 
     if ! git -C "$_path" status >/dev/null 2>&1; then
