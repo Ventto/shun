@@ -3,7 +3,7 @@ Shun
 
 *"Shun is tool to print Shellcheck statistics from a Git repository"*
 
-Who's next ? Who will pay fresh croissants or  pastries for his colleagues ?
+> Who won ? Who's next ? You decide !!!
 
 ## Install
 
